@@ -10,7 +10,11 @@ class ArkadaslariniziDavetEdin extends StatefulWidget {
 class _ArkadaslariniziDavetEdinState extends State<ArkadaslariniziDavetEdin> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Arkadaşlarınızı Davet Edin"),
-    );  }
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Arkadaşlarınızı Davet Edin"),
+        centerTitle: true,
+      ),
+    );
+  }
 }

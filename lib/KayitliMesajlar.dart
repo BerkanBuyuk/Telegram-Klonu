@@ -10,8 +10,11 @@ class KayitliMesajlar extends StatefulWidget {
 class _KayitliMesajlarState extends State<KayitliMesajlar> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Kayıtlı Mesajlar"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Kayıtlı Mesajlar"),
+        centerTitle: true,
+      ),
     );
   }
 }

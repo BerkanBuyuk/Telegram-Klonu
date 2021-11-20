@@ -10,8 +10,11 @@ class YeniGrup extends StatefulWidget {
 class _YeniGrupState extends State<YeniGrup> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Yeni Grup"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Yeni Grup"),
+        centerTitle: true,
+      ),
     );
   }
 }

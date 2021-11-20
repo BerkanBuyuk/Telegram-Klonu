@@ -10,8 +10,11 @@ class Ayarlar extends StatefulWidget {
 class _AyarlarState extends State<Ayarlar> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Ayarlar"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Ayarlar"),
+        centerTitle: true,
+      ),
     );
   }
 }

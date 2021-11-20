@@ -10,7 +10,11 @@ class TelegramOzellikleri extends StatefulWidget {
 class _TelegramOzellikleriState extends State<TelegramOzellikleri> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Telegram Özellikleri"),
-    );  }
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Telegram Özellikleri"),
+        centerTitle: true,
+      ),
+    );
+  }
 }

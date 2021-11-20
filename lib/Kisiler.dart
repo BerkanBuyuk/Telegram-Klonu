@@ -10,8 +10,11 @@ class Kisiler extends StatefulWidget {
 class _KisilerState extends State<Kisiler> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Kişiler"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Kişiler"),
+        centerTitle: true,
+      ),
     );
   }
 }

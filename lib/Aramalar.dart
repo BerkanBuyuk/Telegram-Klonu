@@ -10,8 +10,11 @@ class Aramalar extends StatefulWidget {
 class _AramalarState extends State<Aramalar> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Aramalar"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Aramalar"),
+        centerTitle: true,
+      ),
     );
   }
 }
