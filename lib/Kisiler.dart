@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telegram_klonu/KisiEkle.dart';
 
 class Kisiler extends StatefulWidget {
   const Kisiler({Key? key}) : super(key: key);
@@ -60,6 +61,13 @@ class _KisilerState extends State<Kisiler> {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xFF71a6d2),
+        child: const Icon(Icons.person_add_alt_1,size: 27,),
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => KisiEkle()));
+        },
       ),
     );
   }
