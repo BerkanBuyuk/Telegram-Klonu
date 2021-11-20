@@ -9,7 +9,6 @@ import 'package:telegram_klonu/TelegramOzellikleri.dart';
 import 'package:telegram_klonu/UserPage.dart';
 import 'package:telegram_klonu/YakindakiKisiler.dart';
 import 'package:telegram_klonu/YeniGrup.dart';
-import 'package:telegram_klonu/theme/ThemeConstans.dart';
 import 'package:telegram_klonu/theme/ThemeManager.dart';
 
 ThemeManager _themeManager = ThemeManager();
@@ -41,20 +40,8 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
     }
   }
 
-
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: _themeManager.themeMode,
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-    );
-  }
-
-  @override
-  Widget build2(BuildContext context){
+  Widget build(BuildContext context){
 
     final name = 'Berkan Büyük';
     final email = 'berkanbyk55@gmail.com';
@@ -68,6 +55,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
           //padding: padding,
           children: [
             DrawerHeader(
+              //padding: EdgeInsets.zero,
                 child: Column(
                   children: [
                     buildHeader(
@@ -79,15 +67,6 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                         urlImage: urlImage,
                       )
                       )),
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.flashlight_on_outlined),
-                        Switch(value: _themeManager.themeMode == ThemeMode.dark, onChanged: (newValue){
-                          _themeManager.toggleTheme(newValue);
-                        }),
-                        Icon(Icons.flashlight_off_outlined),
-                      ],
                     ),
                   ],
                 ),
@@ -102,51 +81,51 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
               padding: padding,
               child: Column(
                 children: [
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 5),
                   buildMenuItem(
                     text: 'Yeni Grup',
                     icon: Icons.group,
                     onClicked: () => selectedItem(context, 0),
                   ),
 
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 10),
                   buildMenuItem(
                     text: 'Kişiler',
                     icon: Icons.person,
                     onClicked: () => selectedItem(context, 1),
                   ),
 
-                  const SizedBox(height: 16,),
+                  const SizedBox(height: 10,),
                   buildMenuItem(
                     text: 'Aramalar',
                     icon: Icons.call,
                     onClicked: () => selectedItem(context, 2),
                   ),
 
-                  const SizedBox(height: 16,),
+                  const SizedBox(height: 10,),
                   buildMenuItem(
                     text: 'Yakındaki Kişiler',
                     icon: Icons.nature_people,
                     onClicked: () => selectedItem(context, 3),
                   ),
 
-                  const SizedBox(height: 16,),
+                  const SizedBox(height: 10,),
                   buildMenuItem(
                     text: 'Kayıtlı Mesajlar',
                     icon: Icons.bookmark_border,
                     onClicked: () => selectedItem(context, 3),
                   ),
 
-                  const SizedBox(height: 16,),
+                  const SizedBox(height: 10,),
                   buildMenuItem(
                     text: 'Ayarlar',
                     icon: Icons.settings,
                     onClicked: () => selectedItem(context, 3),
                   ),
 
-                  const SizedBox(height: 20,),
+                  const SizedBox(height: 5,),
                   Divider(color: Colors.blueGrey,),
-                  const SizedBox(height: 20,),
+                  const SizedBox(height: 5,),
 
                   buildMenuItem(
                     text: 'Arkadaşlarınızı Davet Edin',
@@ -212,7 +191,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
     final hoverColor = Colors.black;
 
     return ListTile(
-      leading: Icon(icon, color: color,),
+      leading: Icon(icon, size: 30,),
       title: Text(text, style: TextStyle(color: color),),
       hoverColor: hoverColor,
       onTap: onClicked,

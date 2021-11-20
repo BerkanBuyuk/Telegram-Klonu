@@ -1,16 +1,6 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:telegram_klonu/Aramalar.dart';
-import 'package:telegram_klonu/ArkadaslariniziDavetEdin.dart';
-import 'package:telegram_klonu/Ayarlar.dart';
-import 'package:telegram_klonu/KayitliMesajlar.dart';
-import 'package:telegram_klonu/Kisiler.dart';
-import 'package:telegram_klonu/Mesajlar.dart';
 import 'package:telegram_klonu/NavigationDrawerWidget.dart';
-import 'package:telegram_klonu/TelegramOzellikleri.dart';
-import 'package:telegram_klonu/YakindakiKisiler.dart';
-import 'package:telegram_klonu/YeniGrup.dart';
 import 'package:telegram_klonu/theme/ThemeConstans.dart';
 import 'package:telegram_klonu/theme/ThemeManager.dart';
 
@@ -62,28 +52,12 @@ class _MyAppState extends State<MyApp> {
 
 class AnaSayfa extends StatefulWidget {
 
-  /*const AnaSayfa({Key? key, required this.title}) : super(key: key);
-
-  final String title;*/
-
   @override
   State<AnaSayfa> createState() => _AnaSayfaState();
 }
 
 class _AnaSayfaState extends State<AnaSayfa> with TickerProviderStateMixin {
 
-
-  var sayfaListe = [
-    YeniGrup(),
-    Kisiler(),
-    Aramalar(),
-    YakindakiKisiler(),
-    KayitliMesajlar(),
-    Ayarlar(),
-    ArkadaslariniziDavetEdin(),
-    TelegramOzellikleri(),
-    Mesajlar(),];
-  int secilenIndex = 8;
 
   bool arama = false;
 
@@ -147,6 +121,11 @@ class _AnaSayfaState extends State<AnaSayfa> with TickerProviderStateMixin {
                   });
                 },
               ),
+          //Icon(Icons.flashlight_on_outlined),
+          Switch(value: _themeManager.themeMode == ThemeMode.dark, onChanged: (newValue){
+            _themeManager.toggleTheme(newValue);
+          }),
+          //Icon(Icons.flashlight_off_outlined),
         ],
       ),
       drawer: NavigationDrawerWidget(),
@@ -154,24 +133,14 @@ class _AnaSayfaState extends State<AnaSayfa> with TickerProviderStateMixin {
         builder: (context) => Container(
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(horizontal: 32),
-          child: /*ButtonWidget(
-            icon: Icons.open_in_new,
-            text: 'Open Drawer',
-            onClicked: (){
-              Scaffold.of(context).openDrawer();
-            },
-          ),*/
-          Center(),
+          child: Center(),
         ),
       ),
 
 
 
 
-
-
-      floatingActionButton:
-        Column(
+      floatingActionButton: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Transform.rotate(

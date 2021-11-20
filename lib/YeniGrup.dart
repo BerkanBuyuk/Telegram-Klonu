@@ -12,8 +12,15 @@ class _YeniGrupState extends State<YeniGrup> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Yeni Grup"),
-        centerTitle: true,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Yeni Grup",),
+            Text("en fazla 200000 üye", style: TextStyle(color: Colors.white38, fontSize: 17),),
+          ],
+        ),
+        backgroundColor: Color(0xFF71a6d2),
+        centerTitle: false,
       ),
     );
   }
