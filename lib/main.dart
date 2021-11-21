@@ -1,8 +1,14 @@
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:telegram_klonu/KisilerCevap.dart';
+import 'package:telegram_klonu/KisilerConstructor.dart';
 import 'package:telegram_klonu/NavigationDrawerWidget.dart';
 import 'package:telegram_klonu/theme/ThemeConstans.dart';
 import 'package:telegram_klonu/theme/ThemeManager.dart';
+
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +42,9 @@ class _MyAppState extends State<MyApp> {
       setState(() {});
     }
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -86,83 +95,148 @@ class _AnaSayfaState extends State<AnaSayfa> with TickerProviderStateMixin {
     animasyonKontrol.dispose();
   }
 
+  List<KisilerConstructor> parseKisilerCevap(String cevap){
+    return KisilerCevap.fromJson(json.decode(cevap)).kisilerListesi;
+  }
+
+  Future<List<KisilerConstructor>> tumKisileriGoster() async{
+    var url = Uri.parse("http://kasimadalan.pe.hu/kisiler/tum_kisiler.php");
+    var cevap = await http.get(url);
+    return parseKisilerCevap(cevap.body);
+  }
+
+  Future<bool> uygulamayiKapat() async{
+    await exit(0);
+  }
+
 
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+
+    var ekranBilgisi = MediaQuery.of(context);
+    final double ekranYuksekligi = ekranBilgisi.size.height;
+    final double ekranGenisligi = ekranBilgisi.size.width;
+
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF71a6d2),
         title: arama ?
-            TextField(
-              decoration: InputDecoration(hintText: "Bul"),
-              onChanged: (arama){
-                print("Arama sonucu = $arama");
-              },
-            )
+        TextField(
+          decoration: InputDecoration(hintText: "Bul"),
+          onChanged: (arama) {
+            print("Arama sonucu = $arama");
+          },
+        )
             :
-            Text("Telegram"),
+        Text("Telegram"),
         actions: [
           arama ?
-              IconButton(
-                icon: Icon(Icons.cancel),
-                onPressed: (){
-                  setState(() {
-                    arama = false;
-                  });
-                },
-              )
+          IconButton(
+            icon: Icon(Icons.cancel),
+            onPressed: () {
+              setState(() {
+                arama = false;
+              });
+            },
+          )
               :
-              IconButton(
-                icon: Icon(Icons.search),
-                tooltip: "Arama iconu",
-                onPressed: (){
-                  setState(() {
-                    arama = true;
-                  });
-                },
-              ),
+          IconButton(
+            icon: Icon(Icons.search),
+            tooltip: "Arama iconu",
+            onPressed: () {
+              setState(() {
+                arama = true;
+              });
+            },
+          ),
           //Icon(Icons.flashlight_on_outlined),
-          Switch(value: _themeManager.themeMode == ThemeMode.dark, onChanged: (newValue){
-            _themeManager.toggleTheme(newValue);
-          }),
+          Switch(value: _themeManager.themeMode == ThemeMode.dark,
+              onChanged: (newValue) {
+                _themeManager.toggleTheme(newValue);
+              }),
           //Icon(Icons.flashlight_off_outlined),
         ],
       ),
       drawer: NavigationDrawerWidget(),
-      body: Builder(
-        builder: (context) => Container(
-          alignment: Alignment.center,
-          //padding: EdgeInsets.symmetric(horizontal: 32),
-          child: Text("Anasayfa"),
+      body: WillPopScope(
+        onWillPop: uygulamayiKapat,
+        child: FutureBuilder<List<KisilerConstructor>>(
+          future: tumKisileriGoster(),
+          builder: (context, snapshot){
+            if(snapshot.hasData){
+              var kisilerListesi = snapshot.data;
+              return ListView.builder(
+                itemCount: kisilerListesi!.length,
+                itemBuilder: (context, indeks){
+                  var kisi = kisilerListesi[indeks];
+                  return GestureDetector(
+                    onTap: (){},
+                    child: Card(
+                      child: SizedBox(
+                        height: ekranYuksekligi/9,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: CircleAvatar(
+                                  radius: 30,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 10.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(kisi.kisi_ad),
+                                    Text(kisi.kisi_tel),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              );
+            }else{
+              return Center(child: Text("VERİ YOK", style: TextStyle(fontSize: 30),),);
+            }
+          },
         ),
       ),
 
 
-
-
       floatingActionButton: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Transform.rotate(
-              angle: rotateAnimasyonDegerleri.value,
-              child: FloatingActionButton(
-                backgroundColor: Color(0xFF71a6d2),
-                onPressed: (){
-                  if(fabDurum){
-                    animasyonKontrol.reverse();
-                    fabDurum = false;
-                  }else{
-                    animasyonKontrol.forward();
-                    fabDurum = true;
-                  }
-                },
-                tooltip: 'Yeni Mesaj',
-                child: const Icon(Icons.create,size: 27,),
-              ),
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Transform.rotate(
+            angle: rotateAnimasyonDegerleri.value,
+            child: FloatingActionButton(
+              backgroundColor: Color(0xFF71a6d2),
+              onPressed: () {
+                if (fabDurum) {
+                  animasyonKontrol.reverse();
+                  fabDurum = false;
+                } else {
+                  animasyonKontrol.forward();
+                  fabDurum = true;
+                }
+              },
+              tooltip: 'Yeni Mesaj',
+              child: const Icon(Icons.create, size: 27,),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
     );
+  }
 }
 
 
