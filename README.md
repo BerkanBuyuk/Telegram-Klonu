@@ -1,16 +1,25 @@
-# telegram_klonu
+# Merhaba, Ben Berkan.
 
-Flutter ile Telegram klonu.
+Bu appi Flutter ile hazırladım.
 
-## Getting Started
+## Mobil Uygulama Geliştiricisi Olma Yolunda İlerliyorum !
+- Bu yolda Flutter ile çalışmaya devam ediyorum.
 
-This project is a starting point for a Flutter application.
+### Proje Hakkında
+- Bu proje Telegram klonudur.
+- Henüz yapım aşamasındadır. Gün geçtikçe proje hazır hale gelecektir.
 
-A few resources to get you started if this is your first Flutter project:
+### Proje Fotoğrafları
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/82314218/142776111-0a5752d8-64f0-4de0-92a1-2aa2b102773b.png" width="200" height="400" />
+  <img src="https://user-images.githubusercontent.com/82314218/142776139-9d122cd6-1481-4960-b42b-b067a91e8d06.png" width="200" height="400" />
+  <img src="https://user-images.githubusercontent.com/82314218/142776151-0b02011d-c893-404b-9c76-508c7e7a6ace.png" width="200" height="400" />
+</p>
+
+### İletişim
+[<img align= "left" alt="BerkanBuyuk | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/
+simple-icons@v3/icons/linkedin.svg" />][linkedin]
+
+[linkedin]: https://www.linkedin.com/in/berkanbuyuk/
