@@ -132,7 +132,7 @@ class _AnaSayfaState extends State<AnaSayfa> with TickerProviderStateMixin {
       body: Builder(
         builder: (context) => Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(horizontal: 32),
+          //padding: EdgeInsets.symmetric(horizontal: 32),
           child: Text("Anasayfa"),
         ),
       ),
