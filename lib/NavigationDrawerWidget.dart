@@ -129,14 +129,14 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   buildMenuItem(
                     text: 'Kayıtlı Mesajlar',
                     icon: Icons.bookmark_border,
-                    onClicked: () => selectedItem(context, 3),
+                    onClicked: () => selectedItem(context, 4),
                   ),
 
                   const SizedBox(height: 8,),
                   buildMenuItem(
                     text: 'Ayarlar',
                     icon: Icons.settings,
-                    onClicked: () => selectedItem(context, 3),
+                    onClicked: () => selectedItem(context, 5),
                   ),
 
                   const SizedBox(height: 5,),
@@ -146,14 +146,14 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   buildMenuItem(
                     text: 'Arkadaşlarınızı Davet Edin',
                     icon: Icons.person_add,
-                    onClicked: () => selectedItem(context, 4),
+                    onClicked: () => selectedItem(context, 6),
                   ),
 
                   const SizedBox(height: 10,),
                   buildMenuItem(
                     text: 'Telegram Özellikleri',
                     icon: Icons.contact_support_outlined,
-                    onClicked: () => selectedItem(context, 5),
+                    onClicked: () => selectedItem(context, 7),
                   ),
 
                 ],
