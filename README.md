@@ -19,7 +19,7 @@ Bu appi Flutter ile hazırladım.
 </p>
 
 ### İletişim
-[<img align= "left" alt="BerkanBuyuk | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/
-simple-icons@v3/icons/linkedin.svg" />][linkedin]
-
-[linkedin]: https://www.linkedin.com/in/berkanbuyuk/
+[<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40'>](https://github.com/BerkanBuyuk)
+[<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='40'>](https://www.linkedin.com/in/berkanbuyuk/)
+[<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg' alt='instagram' height='40'>](https://www.instagram.com/brknbyk/)
+[<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg' alt='twitter' height='40'>](https://twitter.com/brknbyk)  
