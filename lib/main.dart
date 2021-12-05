@@ -197,6 +197,19 @@ class _AnaSayfaState extends State<AnaSayfa> with TickerProviderStateMixin {
                                   ],
                                 ),
                               ),
+                              Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text("18:31", style: TextStyle(color: Colors.blueGrey),),
+                                    Spacer(),
+                                    Text("data"),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ),
