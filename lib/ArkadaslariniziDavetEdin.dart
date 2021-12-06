@@ -12,7 +12,7 @@ class _ArkadaslariniziDavetEdinState extends State<ArkadaslariniziDavetEdin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Arkadaşlarınızı Davet Edin"),
+        title: Text("Arkadaşlarınızı Davet Edin", style: TextStyle(),),
         centerTitle: true,
       ),
     );
